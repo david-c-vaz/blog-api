@@ -3,6 +3,7 @@ exports.createUser=function(req,res,next){
   var user=new User({
     name: req.body.name,
     email: req.body.email,
+    password: req.body.password,
     age: req.body.age,
     adult: req.body.adult
   });
@@ -34,6 +35,7 @@ exports.updateUser=function(req,res,next){
       } else {
         user.name= req.body.name;
         user.email= req.body.email;
+        user.password= req.body.password;
         user.age= req.body.age;
         user.adult= req.body.adult;
         user.save(function(err, user) {
