@@ -85,12 +85,13 @@ exports.sign_in=function(req,res,next){
     }else{
       req.session.userName=user.name;
       req.session.email=user.email;
-      res.json({status: 'Successfully Signed In'+req.session.email});
+      res.json({status: 'Successfully Signed In @ '+req.session.email});
     }
   });
 }
 
 exports.sign_out=function(req,res,next){
-  req.session = null;
+  console.log('deleting session');
+  req.session=null;
   res.json({ status : 'Successfully Signed Out'});
 }
