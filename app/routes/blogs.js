@@ -1,5 +1,4 @@
 var Blog=require('../models/blog');
-var db= require('../../db/database.js');
 exports.createBlog=function(req,res,next){
   var blog=new Blog({
     title: req.body.title,

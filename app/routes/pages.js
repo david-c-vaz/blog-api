@@ -1,5 +1,4 @@
 var User=require('../models/user');
-var db= require('../../db/database.js');
 exports.createUser=function(req,res,next){
   var user=new User({
     name: req.body.name,
