@@ -61,7 +61,10 @@ exports.deleteBlog=function(req,res,next){
 
 
 exports.allBlogs=function(req,res,next){
-  return Blog.find({},function(err,blogs){
+  var skip_count=req.query.start;
+  var limit=req.query.limit;
+  
+  return Blog.find({},{}, { skip : skip_count, limit : limit },function(err,blogs){
       if (err) {
         return res.json({'status': err});
       } else {
