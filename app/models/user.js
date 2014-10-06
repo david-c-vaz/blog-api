@@ -4,9 +4,11 @@ var mongoose = require('mongoose')
  
 var userSchema = new mongoose.Schema({
       'name': { type: String },
-      'email': String,
-      'age': Number,
+      'email': {type: String ,validate: /([a-z]+@[a-z]+.co.in)|([a-z]*@[a-z]*.com)/},
+      'age': { type: Number, min: 0, max: 120 },
       'adult': Boolean
   });
- 
-module.exports = mongoose.model('User', userSchema);
+
+var User=mongoose.model('User', userSchema);
+
+module.exports =User 

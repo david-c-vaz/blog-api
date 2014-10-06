@@ -9,7 +9,7 @@ exports.createUser=function(req,res,next){
 
   user.save(function(err, user) {
     if (err){
-      return console.error(err);
+      return res.json(err.errors);
     }else{
       res.json(user);
     } 
@@ -38,7 +38,7 @@ exports.updateUser=function(req,res,next){
         user.adult= req.body.adult;
         user.save(function(err, user) {
           if (err){
-            return console.error(err);
+            return res.json(err.errors);
           }else{
             res.json(user);
           } 
