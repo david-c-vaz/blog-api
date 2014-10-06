@@ -72,3 +72,17 @@ exports.allBlogs=function(req,res,next){
       }
   });
 }
+
+exports.searchBlogs=function(req,res,next){
+  var keywords=req.query.keywords;
+  var skip_count=req.query.start||0;
+  var limit=req.query.limit||5;
+  var keywordsExpression=new RegExp('.*'+keywords+'.*', "i");
+  return Blog.find({ title: keywordsExpression },{}, { skip : skip_count, limit : limit },function(err,blogs){
+      if (err) {
+        return res.json({'status': err});
+      } else {
+        res.json(blogs);
+      }
+  });  
+}
