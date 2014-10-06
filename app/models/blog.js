@@ -7,5 +7,10 @@ var blogSchema = new mongoose.Schema({
       'content': String,
       'created_at': {type: Date, default: Date.now}
   });
- 
-module.exports = mongoose.model('Blog', blogSchema);
+var Blog=mongoose.model('Blog', blogSchema);
+
+Blog.schema.path('title').validate(function (value) {
+  return value.length<=255;
+}, 'Title Too long');
+
+module.exports = Blog;

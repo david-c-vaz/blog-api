@@ -7,7 +7,7 @@ exports.createBlog=function(req,res,next){
 
   blog.save(function(err, blog) {
     if (err){
-      return console.error(err);
+      return res.json(err.errors);
     }else{
       res.json(blog);
     } 
@@ -34,7 +34,7 @@ exports.updateBlog=function(req,res,next){
         blog.content= req.body.content,
         blog.save(function(err, blog) {
           if (err){
-            return console.error(err);
+            return res.json(err.errors);
           }else{
             res.json(blog);
           } 
