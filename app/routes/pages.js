@@ -75,3 +75,22 @@ exports.allUsers=function(req,res,next){
       }
   });
 }
+
+exports.sign_in=function(req,res,next){
+  var user_email=req.body.email;
+  var user_password=req.body.password;
+  return User.findOne({email:user_email,password: user_password},function(err,user){
+    if (err){
+      res.status(401);
+    }else{
+      req.session.userName=user.name;
+      req.session.email=user.email;
+      res.json({status: 'Successfully Signed In'+req.session.email});
+    }
+  });
+}
+
+exports.sign_out=function(req,res,next){
+  req.session = null;
+  res.json({ status : 'Successfully Signed Out'});
+}
