@@ -10,7 +10,7 @@ app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );
 
 app.use(middleware.urlLoader);
-app.use('/api',request_handler.router);
+app.use('/api/v1',request_handler.v1Router);
 
 mode=(process.argv[2] ? process.argv[2] : "-d");
 

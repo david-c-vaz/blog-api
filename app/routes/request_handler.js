@@ -15,4 +15,4 @@ router.route('/blogs/:id').get(blog_routes.showBlog);
 router.route('/blogs/:id').put(blog_routes.updateBlog);
 router.route('/blogs/:id').delete(blog_routes.deleteBlog);
 
-exports.router=router
+exports.v1Router=router
