@@ -2,9 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session= require('express-session');
-var request_handler=require('../app/routes/request_handler');
-var middleware=require('../app/middleware/middleware');
-var db= require('../db/database.js');
+var request_handler=require('./app/routes/request_handler');
+var middleware=require('./app/middleware/middleware');
+var db= require('./db/database.js');
 
 var app = express();
 
